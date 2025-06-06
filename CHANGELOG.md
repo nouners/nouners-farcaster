@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.33] - 2025-06-06
+
+### 🐛 Bug Fixes
+
+- *(config)* Update `WARPCAST_BASE_URL` to new endpoint
+
 ## [1.0.0-alpha.32] - 2025-04-05
 
 ### 🐛 Bug Fixes
