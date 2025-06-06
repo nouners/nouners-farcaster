@@ -2,7 +2,7 @@
 
 interface Env {
 	KV: KVNamespace;
-	WARPCAST_BASE_URL: "https://client.warpcast.com";
+	WARPCAST_BASE_URL: "https://client.farcaster.xyz";
 	NOUNS_SUBGRAPH_URL: "https://api.goldsky.com/api/public/project_cldf2o9pqagp43svvbk5u3kmo/subgraphs/nouns/prod/gn";
 	NEYNAR_API_URL: "https://api.neynar.com";
 	LOG_LEVEL: "debug";
