@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "cron-time-generator": "2.0.3",
-    "graphql": "16.10.0",
+    "graphql": "16.11.0",
     "graphql-request": "6.1.0",
     "luxon": "3.5.0",
     "pino": "9.6.0",
