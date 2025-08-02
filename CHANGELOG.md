@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.35] - 2025-08-02
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Migrate from `.npmrc` to `pnpm-workspace.yaml`
+- *(config)* Remove `.nvmrc` file
+
 ## [1.0.0-alpha.34] - 2025-08-02
 
 ### ⚙️ Miscellaneous Tasks
