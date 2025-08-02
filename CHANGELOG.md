@@ -2,11 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.37] - 2025-08-02
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update pnpm workspace settings
+- *(config)* Add `.prettierignore` for `pnpm-lock.yaml`
+
 ## [1.0.0-alpha.36] - 2025-08-02
 
 ### 🐛 Bug Fixes
 
 - Solve some minor issues and update dependencies
+
+### ◀️ Revert
+
+- *(workflow)* Switch build job to macOS-12
 
 ## [1.0.0-alpha.35] - 2025-08-02
 
