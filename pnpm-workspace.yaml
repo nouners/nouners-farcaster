@@ -1,18 +1,17 @@
-packages:
-  - packages/*
-  - apps/*
-
 autoInstallPeers: true
 
 enablePrePostScripts: true
 
 onlyBuiltDependencies:
+  - bufferutil
   - esbuild
+  - keccak
   - sharp
+  - utf-8-validate
   - workerd
 
 preferSymlinkedExecutables: true
 
 saveExact: true
 
-strictPeerDependencies: true
+strictPeerDependencies: false
