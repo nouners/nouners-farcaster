@@ -1,0 +1,9 @@
+packages:
+  - 'packages/*'
+  - 'apps/*'
+
+saveExact: true
+enablePrePostScripts: true
+preferSymlinkedExecutables: true
+strictPeerDependencies: true
+autoInstallPeers: true
