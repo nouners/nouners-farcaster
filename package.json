@@ -22,7 +22,7 @@
     "cron-time-generator": "2.0.3",
     "graphql": "16.11.0",
     "graphql-request": "6.1.0",
-    "luxon": "3.5.0",
+    "luxon": "3.7.1",
     "pino": "9.6.0",
     "remeda": "2.27.2",
     "type-fest": "4.41.0",
