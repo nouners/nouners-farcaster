@@ -1,6 +1,6 @@
 {
   "name": "nouners-farcaster",
-  "version": "1.0.0-alpha.37",
+  "version": "1.0.0-alpha.38",
   "private": true,
   "description": "",
   "type": "module",
@@ -19,6 +19,8 @@
     "nanoid": ">=3.3.8"
   },
   "dependencies": {
+    "@nekofar/nouns": "1.0.0-alpha.15",
+    "@nekofar/warpcast": "2.0.0-alpha.42",
     "cron-time-generator": "2.0.3",
     "graphql": "16.11.0",
     "graphql-request": "6.1.0",
