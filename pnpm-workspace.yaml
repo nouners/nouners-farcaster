@@ -1,9 +1,18 @@
 packages:
-  - 'packages/*'
-  - 'apps/*'
+  - packages/*
+  - apps/*
+
+autoInstallPeers: true
+
+enablePrePostScripts: true
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
+
+preferSymlinkedExecutables: true
 
 saveExact: true
-enablePrePostScripts: true
-preferSymlinkedExecutables: true
+
 strictPeerDependencies: true
-autoInstallPeers: true
