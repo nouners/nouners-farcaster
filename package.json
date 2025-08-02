@@ -1,6 +1,6 @@
 {
   "name": "nouners-farcaster",
-  "version": "1.0.0-alpha.33",
+  "version": "1.0.0-alpha.34",
   "private": true,
   "description": "",
   "type": "module",
@@ -36,8 +36,8 @@
     "@types/eslint__js": "8.42.3",
     "@types/luxon": "3.4.2",
     "@types/node": "22.13.1",
-    "@typescript-eslint/parser": "8.31.0",
-    "eslint": "9.25.1",
+    "@typescript-eslint/parser": "8.37.0",
+    "eslint": "9.31.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-jsdoc": "50.6.3",
     "eslint-plugin-prettier": "5.2.3",
