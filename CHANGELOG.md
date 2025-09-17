@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.39] - 2025-09-17
+
+### 🐛 Bug Fixes
+
+- *(cache)* Improve error context in log messages
+
+### ⚙️ Miscellaneous Tasks
+
+- *(pnpm)* Remove `onlyBuiltDependencies` from `pnpm-workspace.yaml`
+
 ## [1.0.0-alpha.38] - 2025-08-02
 
 ### ⚙️ Miscellaneous Tasks

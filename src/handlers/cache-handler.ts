@@ -123,7 +123,7 @@ async function fetchAndStoreFarcasterUsers(env: Env): Promise<void> {
         error instanceof Error &&
         !error.message.startsWith('No FID has connected')
       ) {
-        logger.error({ error }, 'Error fetching Farcaster user.')
+        logger.error({ error, address }, 'Error fetching Farcaster user.')
       }
     }
   }
