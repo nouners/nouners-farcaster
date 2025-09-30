@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.41] - 2025-09-30
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Comment out unused `triggers` section
+
 ## [1.0.0-alpha.40] - 2025-09-29
 
 ### 🐛 Bug Fixes
