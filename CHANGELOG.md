@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.44] - 2025-10-30
+
+### 🐛 Bug Fixes
+
+- *(queue)* Normalize error handling
+
+### 🚜 Refactor
+
+- *(services)* Remove unused warpcast helpers
+- *(utilities)* Harden proposal link formatting
+- *(logger)* Tighten pino typings
+
+### 📚 Documentation
+
+- *(services)* Clarify feed exclusions parameter
+
 ## [1.0.0-alpha.43] - 2025-10-30
 
 ### 🚀 Features
