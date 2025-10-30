@@ -1,4 +1,10 @@
-const DEFAULT_NOUNERS_BASE_URL = 'https://nouners.com/proposals'
+const PROPOSAL_BASE_URL_FALLBACK = 'https://nouners.com/proposals'
+
+function getProposalBaseUrl(env?: Env): string {
+  const configuredBaseUrl = env?.PROPOSAL_BASE_URL
+
+  return configuredBaseUrl?.trim() || PROPOSAL_BASE_URL_FALLBACK
+}
 
 /**
  * Builds a fully qualified link to a specific Nouners proposal.
@@ -8,7 +14,7 @@ const DEFAULT_NOUNERS_BASE_URL = 'https://nouners.com/proposals'
  */
 export function formatProposalLink(
   proposalId: number | string,
-  baseUrl = DEFAULT_NOUNERS_BASE_URL,
+  baseUrl = PROPOSAL_BASE_URL_FALLBACK,
 ): string {
   const id = String(proposalId).trim()
 
@@ -21,4 +27,7 @@ export function formatProposalLink(
   return `${normalizedBaseUrl}/${id}`
 }
 
-export { DEFAULT_NOUNERS_BASE_URL }
+export function resolveProposalBaseUrl(env?: Env): string {
+  return getProposalBaseUrl(env).replace(/\/$/, '')
+}
+export { PROPOSAL_BASE_URL_FALLBACK }

@@ -1,9 +1,8 @@
-import { formatProposalLink } from '@/utilities/formatters/proposal-link'
-
 interface ProposalReminderMessageParams {
   proposalId: number | string
   startRelative: string
   endRelative: string
+  link: string
 }
 
 /**
@@ -14,8 +13,7 @@ interface ProposalReminderMessageParams {
 export function buildProposalReminderMessage(
   params: ProposalReminderMessageParams,
 ): string {
-  const { proposalId, startRelative, endRelative } = params
-  const proposalLink = formatProposalLink(proposalId)
+  const { proposalId, startRelative, endRelative, link } = params
 
   return (
     "🗳️ It's voting time, Nouns fam! Proposal #" +
@@ -28,7 +26,7 @@ export function buildProposalReminderMessage(
     '. ' +
     "You received this message because you haven't voted yet. Don't miss out, cast your vote now! 🌟 " +
     'Vote now → ' +
-    proposalLink
+    link
   )
 }
 

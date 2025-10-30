@@ -4,6 +4,10 @@ import { getProposals } from '@/services/nouns/get-proposals'
 import { getFollowers } from '@/services/warpcast/get-followers'
 import { getMe } from '@/services/warpcast/get-me'
 import { getUserByVerification } from '@/services/warpcast/get-user-by-verification'
+import {
+  formatProposalLink,
+  resolveProposalBaseUrl,
+} from '@/utilities/formatters/proposal-link'
 import { buildProposalReminderMessage } from '@/utilities/messages/proposal-reminder'
 import { logger } from '@/utilities/logger'
 import { DateTime } from 'luxon'
@@ -92,6 +96,8 @@ export async function proposalHandler(env: Env) {
     'Fetched followers FIDs.',
   )
 
+  const proposalBaseUrl = resolveProposalBaseUrl(env)
+
   for (const proposal of proposals) {
     const { votes, endBlock, startBlock, id } = proposal
 
@@ -141,6 +147,7 @@ export async function proposalHandler(env: Env) {
       proposalId: id,
       startRelative: proposalStart,
       endRelative: proposalEnd,
+      link: formatProposalLink(id, proposalBaseUrl),
     })
     const idempotencyKey = createHash('sha256').update(message).digest('hex')
 
