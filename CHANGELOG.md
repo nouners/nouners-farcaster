@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.43] - 2025-10-30
+
+### 🚀 Features
+
+- *(worker)* Include proposal links in reminders
+
+### 🚜 Refactor
+
+- *(worker)* Inject proposal base url
+
+### 📚 Documentation
+
+- *(repo)* Add contributor guidelines
+- *(repo)* Document messaging helpers
+- *(repo)* Document proposal link config
+
+### 🧪 Testing
+
+- *(worker)* Cover proposal reminder helpers
+- *(worker)* Cover env-driven proposal links
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Declare proposal base url var
+- *(scripts)* Update `cf-typegen` options for cleaner types
+
 ## [1.0.0-alpha.42] - 2025-10-12
 
 ### 🐛 Bug Fixes
