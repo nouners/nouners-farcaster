@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@nekofar/nouns':
-        specifier: 1.0.0-alpha.15
-        version: 1.0.0-alpha.15(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.2)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.11.0))(graphql-tag@2.12.6(graphql@16.11.0))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.2)(utf-8-validate@5.0.10)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))
+        specifier: 1.0.0-alpha.24
+        version: 1.0.0-alpha.24(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.2)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.11.0))(graphql-tag@2.12.6(graphql@16.11.0))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.2)(utf-8-validate@5.0.10)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))
       '@nekofar/warpcast':
         specifier: 2.0.0-alpha.42
         version: 2.0.0-alpha.42(zod@3.25.76)
@@ -949,8 +949,8 @@ packages:
     resolution: {integrity: sha512-w8CVbdkDrVXFJbfBSlDfafDR6BAkpDmv1bC1UJVCoVny5tW2RKAdn9i68Xf7asYT4TnUhl/hN4zfUiKQq9II4g==}
     engines: {node: '>=16.0.0'}
 
-  '@nekofar/nouns@1.0.0-alpha.15':
-    resolution: {integrity: sha512-ZGrFwsR5mVz/ojCuRS4xGDZdlPHVGRsX5X1HFyUDNdKPi92yzSMnrYpzDV9FRb+EUyLM1PZyw3Vs8hxzGHK8oA==}
+  '@nekofar/nouns@1.0.0-alpha.24':
+    resolution: {integrity: sha512-29BnNNICIU14AXiDW5viIcHHn56oELu7go5G4TrOzQIhJLHIBHYsD053YwQwkehIFWUviyOXDc9/qid40zHIjw==}
     peerDependencies:
       '@tanstack/react-query': ^5.74.4
       '@wagmi/core': ^2.16.7
@@ -4431,7 +4431,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nekofar/nouns@1.0.0-alpha.15(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.2)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.11.0))(graphql-tag@2.12.6(graphql@16.11.0))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.2)(utf-8-validate@5.0.10)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))':
+  '@nekofar/nouns@1.0.0-alpha.24(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.2)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.11.0))(graphql-tag@2.12.6(graphql@16.11.0))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.2)(utf-8-validate@5.0.10)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))':
     dependencies:
       '@tanstack/react-query': 5.83.0(react@19.1.1)
       '@wagmi/core': 2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.2)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.33.2(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.25.76))
@@ -7066,11 +7066,11 @@ snapshots:
   ox@0.6.7(typescript@5.9.2)(zod@3.25.76):
     dependencies:
       '@adraffy/ens-normalize': 1.11.1
-      '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.9.2)(zod@3.25.76)
+      '@noble/curves': 1.9.7
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.1.1(typescript@5.9.2)(zod@3.25.76)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.9.2
