@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "wrangler deploy --dry-run --outdir dist",
-    "cf-typegen": "wrangler types",
+    "cf-typegen": "wrangler types --include-runtime=false --strict-vars=false",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev --test-scheduled",
     "lint": "eslint",
