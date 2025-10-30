@@ -1,4 +1,4 @@
-import { LoggerOptions, pino } from 'pino'
+import pino, { LoggerOptions } from 'pino'
 
 interface LogObject {
   level: number
@@ -28,7 +28,8 @@ function replacer(key: string, value: unknown): unknown {
 function customFormatter(log: LogObject): string {
   const { level, msg, time, ...rest } = log
   const timestamp = new Date(time).toISOString()
-  const levelName = pino.levels.labels[level].toUpperCase()
+  const levelLabel = pino.levels.labels[level] ?? 'info'
+  const levelName = levelLabel.toUpperCase()
 
   // Format the additional data (if any)
   const additionalData = Object.keys(rest).length
@@ -42,15 +43,20 @@ const loggerOptions: LoggerOptions = {
   ...(process.env.NODE_ENV === 'development' && {
     browser: {
       asObject: true,
-      write: (o) => {
-        console.log(customFormatter(o as LogObject))
+      write: (log: LogObject) => {
+        console.log(customFormatter(log))
       },
     },
   }),
   ...(process.env.NODE_ENV === 'production' && {
     timestamp: pino.stdTimeFunctions.isoTime,
   }),
-  serializers: pino.stdSerializers,
+  serializers: {
+    err: pino.stdSerializers.err,
+    error: pino.stdSerializers.err,
+    req: pino.stdSerializers.req,
+    res: pino.stdSerializers.res,
+  },
   level:
     process.env.LOG_LEVEL ??
     (process.env.NODE_ENV === 'development' ? 'trace' : 'info'),
