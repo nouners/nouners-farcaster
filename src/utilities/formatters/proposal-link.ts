@@ -1,9 +1,19 @@
 const PROPOSAL_BASE_URL_FALLBACK = 'https://nouners.com/proposals'
 
+/**
+ * Retrieves the configured proposal base URL or falls back to the default.
+ * @param env - Optional worker environment containing `PROPOSAL_BASE_URL`.
+ * @returns The normalized proposal base URL.
+ */
 function getProposalBaseUrl(env?: Env): string {
   const configuredBaseUrl = env?.PROPOSAL_BASE_URL
+  const trimmedBaseUrl = configuredBaseUrl?.trim()
 
-  return configuredBaseUrl?.trim() || PROPOSAL_BASE_URL_FALLBACK
+  if (!trimmedBaseUrl) {
+    return PROPOSAL_BASE_URL_FALLBACK
+  }
+
+  return trimmedBaseUrl
 }
 
 /**
@@ -27,6 +37,11 @@ export function formatProposalLink(
   return `${normalizedBaseUrl}/${id}`
 }
 
+/**
+ * Resolves the base proposal URL that should be used for link generation.
+ * @param env - Optional worker environment containing `PROPOSAL_BASE_URL`.
+ * @returns The sanitized proposal base URL without a trailing slash.
+ */
 export function resolveProposalBaseUrl(env?: Env): string {
   return getProposalBaseUrl(env).replace(/\/$/, '')
 }
