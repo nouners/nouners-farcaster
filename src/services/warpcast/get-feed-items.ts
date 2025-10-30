@@ -17,7 +17,7 @@ interface Response {
  * @param env - The environment variables required to make the request, including access token and base URL.
  * @param feedKey - The key identifying the feed to be fetched.
  * @param feedType - The type of the feed.
- * @param excludeItemIdPrefixes
+ * @param excludeItemIdPrefixes - Optional prefixes of item identifiers that should be filtered out.
  * @returns - A promise that resolves to a Result object containing the feed items.
  */
 export const getFeedItems = async (
