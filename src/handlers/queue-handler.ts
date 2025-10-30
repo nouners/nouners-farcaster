@@ -20,6 +20,15 @@ interface DirectCastBody {
 }
 
 /**
+ * Normalizes unknown error values to Error instances for consistent logging.
+ * @param error - The caught error or value thrown.
+ * @returns An Error instance representing the failure.
+ */
+function normalizeError(error: unknown): Error {
+  return error instanceof Error ? error : new Error(String(error))
+}
+
+/**
  * A function to calculate the exponential backoff delay.
  * @param attempts - The number of attempts or retries that have been made.
  * @param baseDelaySeconds - The base delay in seconds for the initial attempt.
@@ -46,8 +55,9 @@ async function handleLikeTask(env: Env, data: ReactionBody['data']) {
 
     logger.info({ hash, result }, 'Like applied successfully to cast.')
   } catch (error) {
-    logger.error({ hash, error }, 'Failed to apply like to cast.')
-    throw error
+    const normalizedError = normalizeError(error)
+    logger.error({ hash, error: normalizedError }, 'Failed to apply like to cast.')
+    throw normalizedError
   }
 }
 
@@ -65,8 +75,12 @@ async function handleRecastTask(env: Env, data: ReactionBody['data']) {
 
     logger.info({ hash, result }, 'Recast applied successfully to cast.')
   } catch (error) {
-    logger.error({ hash, error }, 'Failed to apply recast to cast.')
-    throw error
+    const normalizedError = normalizeError(error)
+    logger.error(
+      { hash, error: normalizedError },
+      'Failed to apply recast to cast.',
+    )
+    throw normalizedError
   }
 }
 
@@ -95,8 +109,12 @@ async function handleDirectCastTask(env: Env, data: DirectCastBody['data']) {
 
     logger.info({ recipientFid, result }, 'Direct cast sent successfully.')
   } catch (error) {
-    logger.error({ recipientFid, error }, 'Failed to send direct cast message.')
-    throw error
+    const normalizedError = normalizeError(error)
+    logger.error(
+      { recipientFid, error: normalizedError },
+      'Failed to send direct cast message.',
+    )
+    throw normalizedError
   }
 }
 
@@ -122,7 +140,7 @@ async function processMessage(env: Env, message: Message) {
       break
 
     default:
-      logger.error('Unknown task type:', type)
+      logger.error({ type }, 'Unknown task type received.')
   }
 }
 
@@ -154,8 +172,13 @@ export async function queueHandler(
         'Message acknowledged successfully.',
       )
     } catch (error) {
+      const normalizedError = normalizeError(error)
       logger.error(
-        { messageId: message.id, error, attempts: message.attempts },
+        {
+          messageId: message.id,
+          error: normalizedError,
+          attempts: message.attempts,
+        },
         'Error processing message, retrying...',
       )
 
