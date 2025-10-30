@@ -6,9 +6,9 @@ updates:
     directory: '/'
     # Check for updates every weekday
     schedule:
-      interval: "daily"
-      time: "00:00"
-      timezone: "UTC"
+      interval: 'daily'
+      time: '00:00'
+      timezone: 'UTC'
     # Add assignees
     assignees:
       - 'nekofar'
@@ -33,9 +33,9 @@ updates:
     directory: '/'
     # Check for updates every weekday
     schedule:
-      interval: "daily"
-      time: "00:00"
-      timezone: "UTC"
+      interval: 'daily'
+      time: '00:00'
+      timezone: 'UTC'
     # Add assignees
     assignees:
       - 'nekofar'
@@ -60,3 +60,7 @@ updates:
           - 'eslint'
           - '@typescript-eslint/eslint-plugin'
           - '@typescript-eslint/parser'
+    # Ignore these dependencies
+    ignore:
+      - dependency-name: '@cloudflare/vitest-pool-workers'
+      - dependency-name: 'wrangler'
