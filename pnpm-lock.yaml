@@ -16,8 +16,8 @@ importers:
         specifier: 1.0.0-alpha.24
         version: 1.0.0-alpha.24(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.38.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.11.0))(graphql-tag@2.12.6(graphql@16.11.0))(graphql@16.11.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)(viem@2.38.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.38.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))
       '@nekofar/warpcast':
-        specifier: 2.0.0-alpha.81
-        version: 2.0.0-alpha.81(zod@3.25.76)
+        specifier: 2.0.0-alpha.83
+        version: 2.0.0-alpha.83(ofetch@1.5.0)(zod@3.25.76)
       cron-time-generator:
         specifier: 2.0.3
         version: 2.0.3
@@ -1008,10 +1008,11 @@ packages:
       viem: ^2.27.2
       wagmi: ^2.14.16
 
-  '@nekofar/warpcast@2.0.0-alpha.81':
-    resolution: {integrity: sha512-Qc+wm47NVt0ZqOaTYtP9k2zH+WI2p7LTpasZtrjzQ6YwHdCe4tfy4bEgGaif4bBFKdUNYTQTu/tmRnwEPuE7Zw==}
+  '@nekofar/warpcast@2.0.0-alpha.83':
+    resolution: {integrity: sha512-H2mOuvYaQZPc7kdCJnEoBk7lgtqdOISTHleWD3mhrJw5fwCSE+5Gl8oc/SNPmeyHRln3t+ywWciXvNipcIVKBw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
+      ofetch: ^1.5.0
       zod: ^4.0.10
 
   '@noble/ciphers@1.2.1':
@@ -1464,6 +1465,7 @@ packages:
 
   '@walletconnect/ethereum-provider@2.21.1':
     resolution: {integrity: sha512-SSlIG6QEVxClgl1s0LMk4xr2wg4eT3Zn/Hb81IocyqNSGfXpjtawWxKxiC5/9Z95f1INyBD6MctJbL/R1oBwIw==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/events@1.0.1':
     resolution: {integrity: sha512-NPTqaoi0oPBVNuLv7qPaJazmGHs5JGyO8eEAk5VGKmJzDR7AHzD4k6ilox5kxk1iwiOnFopBOOMLs86Oa76HpQ==}
@@ -1508,9 +1510,11 @@ packages:
 
   '@walletconnect/sign-client@2.21.0':
     resolution: {integrity: sha512-z7h+PeLa5Au2R591d/8ZlziE0stJvdzP9jNFzFolf2RG/OiXulgFKum8PrIyXy+Rg2q95U9nRVUF9fWcn78yBA==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/sign-client@2.21.1':
     resolution: {integrity: sha512-QaXzmPsMnKGV6tc4UcdnQVNOz4zyXgarvdIQibJ4L3EmLat73r5ZVl4c0cCOcoaV7rgM9Wbphgu5E/7jNcd3Zg==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/time@1.0.2':
     resolution: {integrity: sha512-uzdd9woDcJ1AaBZRhqy5rNC9laqWGErfc4dxA9a87mPdKOgWMD85mcFo9dIYIts/Jwocfwn07EC6EzclKubk/g==}
@@ -1523,9 +1527,11 @@ packages:
 
   '@walletconnect/universal-provider@2.21.0':
     resolution: {integrity: sha512-mtUQvewt+X0VBQay/xOJBvxsB3Xsm1lTwFjZ6WUwSOTR1X+FNb71hSApnV5kbsdDIpYPXeQUbGt2se1n5E5UBg==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/universal-provider@2.21.1':
     resolution: {integrity: sha512-Wjx9G8gUHVMnYfxtasC9poGm8QMiPCpXpbbLFT+iPoQskDDly8BwueWnqKs4Mx2SdIAWAwuXeZ5ojk5qQOxJJg==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/utils@2.21.0':
     resolution: {integrity: sha512-zfHLiUoBrQ8rP57HTPXW7rQMnYxYI4gT9yTACxVW6LhIFROTF6/ytm5SKNoIvi4a5nX5dfXG4D9XwQUCu8Ilig==}
@@ -4511,8 +4517,9 @@ snapshots:
       viem: 2.38.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       wagmi: 2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.38.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
 
-  '@nekofar/warpcast@2.0.0-alpha.81(zod@3.25.76)':
+  '@nekofar/warpcast@2.0.0-alpha.83(ofetch@1.5.0)(zod@3.25.76)':
     dependencies:
+      ofetch: 1.5.0
       zod: 3.25.76
 
   '@noble/ciphers@1.2.1': {}
