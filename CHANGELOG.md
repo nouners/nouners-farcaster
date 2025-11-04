@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0-alpha.46] - 2025-11-04
+## [1.0.0-alpha.47] - 2025-11-04
 
 ### 🐛 Bug Fixes
 
