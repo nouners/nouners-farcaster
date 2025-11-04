@@ -53,8 +53,8 @@ importers:
         specifier: 4.20251014.0
         version: 4.20251014.0
       '@eslint/js':
-        specifier: 9.38.0
-        version: 9.38.0
+        specifier: 9.39.1
+        version: 9.39.1
       '@types/eslint__js':
         specifier: 9.14.0
         version: 9.14.0
@@ -5029,7 +5029,7 @@ snapshots:
 
   '@types/eslint__js@9.14.0':
     dependencies:
-      '@eslint/js': 9.38.0
+      '@eslint/js': 9.39.1
 
   '@types/estree@1.0.8': {}
 
