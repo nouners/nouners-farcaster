@@ -34,3 +34,24 @@ it('responds via fetch handler', async () => {
   const payload = await response.json()
   expect(payload).toMatchObject({ status: 'ok' })
 })
+
+it('accepts webhook payloads', async () => {
+  const ctx = createExecutionContext()
+  const response = await worker.fetch(
+    new Request('https://example.com/webhook', {
+      method: 'POST',
+      body: JSON.stringify({ foo: 'bar' }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }),
+    env,
+    ctx,
+  )
+
+  await waitOnExecutionContext(ctx)
+
+  expect(response.status).toBe(202)
+  const payload = await response.json()
+  expect(payload).toMatchObject({ status: 'accepted' })
+})
