@@ -21,7 +21,7 @@ async function getNounFeedItems(env: Env) {
   logger.info('Fetching noun feed items')
   const allItems: Awaited<ReturnType<typeof getFeedItems>>['items'] = []
   let fetchedItemsCount = 0
-  const maxItems = 300
+  const maxItems = 30
 
   let excludeItemIdPrefixes: string[] = []
 
