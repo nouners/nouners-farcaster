@@ -36,6 +36,7 @@ async function handleSubscribers(env: Env) {
   const newSubscribers = await Promise.all(
     categories.map(async (category) => {
       logger.info({ category }, 'Fetching conversations for category.')
+      // Let the service page through conversations until the category limit is satisfied.
       const { conversations } = await getDirectCastConversations(
         env,
         100,
@@ -89,6 +90,7 @@ async function handleMessages(env: Env) {
   const { user } = await getMe(env)
 
   logger.info('Fetching unread conversations...')
+  // Pull unread conversations; the service paginates to cap the request at the given limit.
   const { conversations } = await getDirectCastConversations(
     env,
     100,

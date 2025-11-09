@@ -83,6 +83,7 @@ export async function proposalHandler(env: Env) {
 
   const batch: MessageSendRequest<DirectCastBody>[] = []
 
+  // Fetch the follower list; pagination inside the service enforces the requested size.
   const { users: followers } = await getFollowers(env, user.fid)
   const followersFids = pipe(
     followers,
