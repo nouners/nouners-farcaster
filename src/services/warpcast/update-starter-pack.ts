@@ -17,7 +17,7 @@ interface Response {
  * @param fids - An array of numeric identifiers representing FIDs associated with the starter pack.
  * @param labels - An array of labels categorizing the starter pack.
  * @returns A promise that resolves with the updated starter pack details (`Result`).
- * @throws Will throw an error if the API request fails or if there are errors in the response payload.
+ * @throws {Error} Will throw an error if the API request fails or if there are errors in the response payload.
  */
 export const updateStarterPack = async (
   env: Env,
