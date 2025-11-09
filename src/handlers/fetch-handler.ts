@@ -37,24 +37,55 @@ export async function fetchHandler(
 
   logger.debug({ method, pathname }, 'Received fetch request.')
 
-  if (method !== 'GET') {
-    return jsonResponse(
-      { error: 'Method Not Allowed', method },
-      {
-        status: 405,
-        headers: {
-          Allow: 'GET',
-        },
-      },
-    )
-  }
-
   if (pathname === '/' || pathname === '/health' || pathname === '/healthz') {
+    if (method !== 'GET') {
+      return jsonResponse(
+        { error: 'Method Not Allowed', method },
+        {
+          status: 405,
+          headers: {
+            Allow: 'GET',
+          },
+        },
+      )
+    }
+
     return jsonResponse({
       status: 'ok',
       environment: env.NODE_ENV ?? 'production',
       timestamp: new Date().toISOString(),
     })
+  }
+
+  if (pathname === '/webhook') {
+    if (method !== 'POST') {
+      return jsonResponse(
+        { error: 'Method Not Allowed', method },
+        {
+          status: 405,
+          headers: {
+            Allow: 'POST',
+          },
+        },
+      )
+    }
+
+    let payload: unknown = null
+    try {
+      payload = await request.json()
+    } catch (error) {
+      logger.warn({ error }, 'Webhook payload could not be parsed.')
+    }
+
+    logger.info({ payload }, 'Webhook payload received.')
+
+    return jsonResponse(
+      {
+        status: 'accepted',
+        receivedAt: new Date().toISOString(),
+      },
+      { status: 202 },
+    )
   }
 
   return jsonResponse(
