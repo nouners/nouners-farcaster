@@ -64,3 +64,4 @@ updates:
     ignore:
       - dependency-name: '@cloudflare/vitest-pool-workers'
       - dependency-name: 'wrangler'
+      - dependency-name: 'vitest'

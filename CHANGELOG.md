@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.50] - 2025-11-09
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Enable cron triggers
+
 ## [1.0.0-alpha.49] - 2025-11-09
 
 ### 🚀 Features
