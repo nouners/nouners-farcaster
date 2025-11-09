@@ -52,7 +52,7 @@ export async function fetchHandler(
 
     return jsonResponse({
       status: 'ok',
-      environment: env.NODE_ENV ?? 'production',
+      environment: env.NODE_ENV,
       timestamp: new Date().toISOString(),
     })
   }
