@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.49] - 2025-11-09
+
+### 🚀 Features
+
+- *(worker)* Add fetch handler for health checks
+- *(worker)* Add webhook endpoint
+
+### 🧪 Testing
+
+- *(worker)* Cover fetch handler health response
+- *(worker)* Assert webhook acceptance
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Enable workers_dev
+
 ## [1.0.0-alpha.47] - 2025-11-04
 
 ### 🐛 Bug Fixes
