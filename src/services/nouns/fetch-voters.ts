@@ -1,17 +1,6 @@
+import { Query, Delegate as Voter } from '@nekofar/nouns/subgraphs'
 import { gql, GraphQLClient } from 'graphql-request'
 import { pipe, uniqueBy } from 'remeda'
-
-interface Voter {
-  id: string
-}
-
-interface Vote {
-  voter: Voter
-}
-
-interface Data {
-  votes: Vote[]
-}
 
 interface Result {
   voters: Voter[]
@@ -69,7 +58,7 @@ export async function fetchVoters(
   while (shouldContinueFetching) {
     try {
       const query = getVotesQuery(skip, first, startBlock)
-      const { votes } = await client.request<Data>(query)
+      const { votes } = await client.request<Query>(query)
       shouldContinueFetching = votes.length > 0
 
       if (shouldContinueFetching) {

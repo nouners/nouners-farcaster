@@ -1,17 +1,5 @@
+import { Account, Query } from '@nekofar/nouns/subgraphs'
 import { gql, GraphQLClient } from 'graphql-request'
-
-interface Noun {
-  id: string
-}
-
-interface Account {
-  id: string
-  nouns: Noun[]
-}
-
-interface Data {
-  accounts: Account[]
-}
 
 interface Result {
   accounts: Account[]
@@ -74,7 +62,7 @@ export async function fetchAccounts(env: Env): Promise<Result> {
   while (shouldContinueFetching) {
     try {
       const query = getAccountsQuery(skip, first)
-      const { accounts } = await client.request<Data>(query)
+      const { accounts } = await client.request<Query>(query)
       shouldContinueFetching = accounts.length > 0
 
       if (shouldContinueFetching) {
