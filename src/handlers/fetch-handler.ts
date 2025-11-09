@@ -1,4 +1,5 @@
 import { logger } from '@/utilities/logger'
+import { createHmac } from 'node:crypto'
 
 /**
  * Builds a JSON response with standardized headers.
@@ -18,9 +19,29 @@ function jsonResponse(body: unknown, init?: ResponseInit): Response {
 }
 
 /**
+ * Validates the webhook signature using an HMAC SHA256 digest.
+ * @param body - Raw request body as received (must not be parsed first).
+ * @param signature - The signature value from the `x-alchemy-signature` header.
+ * @param signingKey - Shared secret configured in the environment.
+ * @returns True when the signature matches, false otherwise.
+ */
+function isValidSignature(
+  body: string,
+  signature: string | null,
+  signingKey?: string,
+): boolean {
+  if (!signature || !signingKey) {
+    return false
+  }
+
+  const digest = createHmac('sha256', signingKey).update(body, 'utf8').digest('hex')
+  return signature === digest
+}
+
+/**
  * Handles incoming fetch requests for the Worker.
- * Supports a simple health-check endpoint and returns structured errors for
- * unsupported paths or methods so that upstream monitors behave predictably.
+ * Supports health checks and webhook ingestion with signature validation so that
+ * upstream services receive structured responses.
  * @param request - The inbound Request object.
  * @param env - Worker bindings and variables.
  * @param _ctx - Execution context, reserved for future async work.
@@ -70,9 +91,28 @@ export async function fetchHandler(
       )
     }
 
+    const rawBody = await request.text()
+    const signature = request.headers.get('x-alchemy-signature')
+
+    if (!env.ALCHEMY_SIGNING_KEY) {
+      logger.error('Missing Alchemy signing key.')
+      return jsonResponse(
+        { error: 'Server misconfigured' },
+        { status: 500 },
+      )
+    }
+
+    if (!isValidSignature(rawBody, signature, env.ALCHEMY_SIGNING_KEY)) {
+      logger.warn('Invalid webhook signature received.')
+      return jsonResponse(
+        { error: 'Invalid signature' },
+        { status: 401 },
+      )
+    }
+
     let payload: unknown = null
     try {
-      payload = await request.json()
+      payload = JSON.parse(rawBody)
     } catch (error) {
       logger.warn({ error }, 'Webhook payload could not be parsed.')
     }
