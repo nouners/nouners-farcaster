@@ -36,6 +36,7 @@ export const getFollowers = async (
   let response: Response
 
   do {
+    // Continue paging through followers until we reach the target size.
     const params = {
       fid: fid.toString(),
       cursor: newCursor,
@@ -50,6 +51,7 @@ export const getFollowers = async (
         params,
       },
     )
+    // Append the newly fetched users before we check the stopping conditions.
     users = [...users, ...response.result.users]
     newCursor = response.next ? response.next.cursor : ''
   } while (response.next && users.length < limit)
