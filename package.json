@@ -30,7 +30,8 @@
     "remeda": "2.32.0",
     "type-fest": "5.2.0",
     "unicorn-magic": "0.3.0",
-    "viem": "2.38.6"
+    "viem": "2.38.6",
+    "zod": "4.1.12"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.7.8",
