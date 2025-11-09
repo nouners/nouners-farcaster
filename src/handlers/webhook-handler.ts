@@ -1,6 +1,8 @@
 import { jsonResponse } from '@/utilities/responses/json-response'
 import { logger } from '@/utilities/logger'
 import { createHmac } from 'node:crypto'
+import { webhookPayloadSchema } from '@/types/webhook'
+import type { WebhookPayload } from '@/types/webhook'
 
 /**
  * Validates the webhook signature using the configured signing key.
@@ -20,6 +22,30 @@ function isValidSignature(
 
   const digest = createHmac('sha256', signingKey).update(body, 'utf8').digest('hex')
   return signature === digest
+}
+
+/**
+ * Parses and validates a webhook payload string.
+ * @param rawBody - The raw body string from the request.
+ * @returns A valid payload when parsing succeeds, otherwise null.
+ */
+function parseWebhookPayload(rawBody: string): WebhookPayload | null {
+  try {
+    const parsed: unknown = JSON.parse(rawBody)
+    const result = webhookPayloadSchema.safeParse(parsed)
+    if (result.success) {
+      return result.data
+    }
+
+    logger.warn(
+      { issues: result.error.issues },
+      'Webhook payload failed schema validation.',
+    )
+    return null
+  } catch (error) {
+    logger.warn({ error }, 'Webhook payload could not be parsed to JSON.')
+    return null
+  }
 }
 
 /**
@@ -57,11 +83,10 @@ export async function webhookHandler(
     return jsonResponse({ error: 'Invalid signature' }, { status: 401 })
   }
 
-  let payload: unknown = null
-  try {
-    payload = JSON.parse(rawBody)
-  } catch (error) {
-    logger.warn({ error }, 'Webhook payload could not be parsed.')
+  const payload = parseWebhookPayload(rawBody)
+  if (!payload) {
+    logger.warn({ rawBody }, 'Webhook payload failed validation.')
+    return jsonResponse({ error: 'Invalid payload' }, { status: 400 })
   }
 
   logger.info({ payload }, 'Webhook payload received.')
