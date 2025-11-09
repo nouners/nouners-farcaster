@@ -5,6 +5,7 @@ import {
   waitOnExecutionContext,
 } from 'cloudflare:test'
 import { expect, it } from 'vitest'
+import { createHmac } from 'node:crypto'
 // Could import any other source file/function here
 import worker from '../src'
 
@@ -36,13 +37,20 @@ it('responds via fetch handler', async () => {
 })
 
 it('accepts webhook payloads', async () => {
+  env.ALCHEMY_SIGNING_KEY = 'test-signing-key'
+  const body = JSON.stringify({ foo: 'bar' })
+  const signature = createHmac('sha256', env.ALCHEMY_SIGNING_KEY)
+    .update(body, 'utf8')
+    .digest('hex')
+
   const ctx = createExecutionContext()
   const response = await worker.fetch(
     new Request('https://example.com/webhook', {
       method: 'POST',
-      body: JSON.stringify({ foo: 'bar' }),
+      body,
       headers: {
         'content-type': 'application/json',
+        'x-alchemy-signature': signature,
       },
     }),
     env,
@@ -54,4 +62,27 @@ it('accepts webhook payloads', async () => {
   expect(response.status).toBe(202)
   const payload = await response.json()
   expect(payload).toMatchObject({ status: 'accepted' })
+})
+
+it('rejects webhook payloads with invalid signature', async () => {
+  env.ALCHEMY_SIGNING_KEY = 'test-signing-key'
+  const ctx = createExecutionContext()
+  const response = await worker.fetch(
+    new Request('https://example.com/webhook', {
+      method: 'POST',
+      body: JSON.stringify({ foo: 'bar' }),
+      headers: {
+        'content-type': 'application/json',
+        'x-alchemy-signature': 'invalid-signature',
+      },
+    }),
+    env,
+    ctx,
+  )
+
+  await waitOnExecutionContext(ctx)
+
+  expect(response.status).toBe(401)
+  const payload = await response.json()
+  expect(payload).toMatchObject({ error: 'Invalid signature' })
 })
