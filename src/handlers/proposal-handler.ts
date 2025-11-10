@@ -13,6 +13,7 @@ import { logger } from '@/utilities/logger'
 import { DateTime } from 'luxon'
 import { createHash } from 'node:crypto'
 import { filter, isTruthy, map, pipe } from 'remeda'
+import { ProposalStatus } from '@nekofar/nouns/subgraphs'
 
 interface DirectCastBody {
   type: 'direct-cast'
@@ -73,7 +74,8 @@ export async function proposalHandler(env: Env) {
   proposals = filter(
     proposals,
     (proposal) =>
-      proposal.status === 'ACTIVE' && Number(proposal.endBlock) > blockNumber,
+      proposal.status === ProposalStatus.Active &&
+      Number(proposal.endBlock) > blockNumber,
   )
 
   logger.info(
