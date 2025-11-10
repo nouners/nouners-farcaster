@@ -10,9 +10,10 @@ export default {
   /**
    * Forwards every HTTP request to the fetch handler, which can use the
    * execution context to schedule follow-up work before returning.
-   * @param request
-   * @param env
-   * @param ctx
+   * @param request - Incoming HTTP request to handle.
+   * @param env - Worker bindings for configuration and services.
+   * @param ctx - Execution context used for background work.
+   * @returns Response produced by the fetch handler.
    */
   fetch: async (request, env, ctx) => {
     return fetchHandler(request, env, ctx)
@@ -20,9 +21,10 @@ export default {
   /**
    * Passes queue batches to the queue handler so retries and acks remain
    * centralized in one module.
-   * @param batch
-   * @param env
-   * @param ctx
+   * @param batch - Queue batch delivered by Cloudflare.
+   * @param env - Worker bindings for configuration and services.
+   * @param ctx - Execution context used for background work.
+   * @returns A promise that resolves when queue handling finishes.
    */
   queue: async (batch, env, ctx) => {
     await queueHandler(batch, env, ctx)
@@ -30,8 +32,9 @@ export default {
   /**
    * Maps scheduled cron triggers to the scheduler handler, which inspects
    * the cron string and executes the appropriate job.
-   * @param controller
-   * @param env
+   * @param controller - Scheduler controller describing the cron trigger.
+   * @param env - Worker bindings for configuration and services.
+   * @returns A promise that resolves when the scheduled task completes.
    */
   scheduled: async (controller, env) => {
     await scheduledHandler(controller, env)
