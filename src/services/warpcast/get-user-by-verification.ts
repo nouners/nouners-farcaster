@@ -9,6 +9,14 @@ interface Response {
   result: Result
 }
 
+/**
+ * Looks up a Warpcast user via a verified wallet address, allowing us to
+ * bridge on-chain voter data with Farcaster identities.
+ * @param env - Worker bindings containing Warpcast credentials.
+ * @param address - Wallet address to resolve.
+ * @returns The Warpcast user tied to the supplied verification.
+ * @throws {Error} When Warpcast returns an error or the request fails.
+ */
 export const getUserByVerification = async (
   env: Env,
   address: string,

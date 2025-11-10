@@ -12,14 +12,12 @@ interface Response {
 }
 
 /**
- * Fetches starter packs data for a given FID (farcaster ID) from the Warpcast API.
- *
- * This function interacts with the Warpcast API to retrieve a list of users associated with a specified starter pack.
- * It requires environment configuration values such as the API's base URL and access token.
- * @param env - The environment configuration containing necessary API credentials.
- * @param fid - The Farcaster ID for which the starter pack users are to be retrieved.
- * @param [limit] - The maximum number of users to retrieve, defaulted to 15. Must be a non-negative value.
- * @returns - A promise that resolves to the result containing the starter packs data.
+ * Retrieves starter packs owned or curated by the user associated with the
+ * provided fid so automations can locate the correct pack before updating it.
+ * @param env - Worker bindings containing Warpcast credentials.
+ * @param fid - Farcaster ID whose starter packs should be fetched.
+ * @param [limit] - Maximum packs to return (default 15, capped by API).
+ * @returns Starter packs list plus the cursor supplied by Warpcast.
  */
 export const getStarterPacks = async (
   env: Env,

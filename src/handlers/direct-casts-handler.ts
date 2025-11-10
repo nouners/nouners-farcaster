@@ -123,6 +123,8 @@ async function handleMessages(env: Env) {
     const message =
       'This account runs on autopilot, so please don’t send messages directly here. ' +
       'If you have any issues or questions, just reach out to @nekofar! 😊'
+    // Deterministic hash prevents the same canned reply from being enqueued
+    // twice for a given recipient if a retry occurs downstream.
     const idempotencyKey = createHash('sha256').update(message).digest('hex')
 
     const task: MessageSendRequest<DirectCastBody> = {
@@ -161,9 +163,10 @@ async function handleMessages(env: Env) {
 }
 
 /**
- * Updates the subscriber list by adding any new participants from direct cast conversations.
- * @param env - The environment object containing the KV store.
- * @returns - A promise that resolves after the update is completed.
+ * Coordinates direct-cast messaging by auto-replying to unread DMs and
+ * refreshing subscription caches so other jobs can target the right FIDs.
+ * @param env - Worker bindings that expose KV, queue, and Warpcast tokens.
+ * @returns Promise that resolves after replies are queued and caches saved.
  */
 export async function directCastsHandler(env: Env) {
   logger.info('Starting direct cast handler process...')

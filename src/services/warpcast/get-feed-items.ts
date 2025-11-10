@@ -13,12 +13,14 @@ interface Response {
 }
 
 /**
- * Fetches feed items based on the provided feed key, feed type, and an optional timestamp.
- * @param env - The environment variables required to make the request, including access token and base URL.
- * @param feedKey - The key identifying the feed to be fetched.
- * @param feedType - The type of the feed.
- * @param excludeItemIdPrefixes - Optional prefixes of item identifiers that should be filtered out.
- * @returns - A promise that resolves to a Result object containing the feed items.
+ * Requests feed items for a Warpcast channel without mutating the feed
+ * cursor so callers can decide how aggressively they want to page and
+ * which hashes to filter out.
+ * @param env - Worker bindings with Warpcast base URL and access token.
+ * @param feedKey - Logical key of the channel feed to pull.
+ * @param feedType - Feed presentation style such as 'default'.
+ * @param excludeItemIdPrefixes - Hash prefixes to omit to avoid repeats.
+ * @returns API response payload with feed items and timing metadata.
  */
 export const getFeedItems = async (
   env: Env,

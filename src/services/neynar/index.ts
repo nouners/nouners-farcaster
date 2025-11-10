@@ -90,6 +90,14 @@ interface ReactionResponse {
   cursor?: string | null
 }
 
+/**
+ * Fetches a page of casts from Neynar's nouns channel feed so callers can
+ * stitch together their own pagination strategy.
+ * @param env - Worker bindings containing the Neynar API base URL and key.
+ * @param cursor - Continuation token from a previous call, if available.
+ * @returns Casts returned for the cursor and the cursor that was used.
+ * @throws {Error} When the network request fails unexpectedly.
+ */
 export const fetchFarcasterFeed = async (
   env: Env,
   cursor?: string,
@@ -105,7 +113,7 @@ export const fetchFarcasterFeed = async (
   let casts: Cast[] = []
 
   try {
-    // We loop 10 times since each request returns 100 casts
+    // Fetch a single page to keep paging logic in the caller.
     const response = await fetch(cursor ? `${url}&cursor=${cursor}` : url, {
       headers,
     })
@@ -128,6 +136,16 @@ export const fetchFarcasterFeed = async (
 }
 
 // New method to fetch likes for a specific cast
+/**
+ * Collects reactions (likes or recasts) for a specific cast by walking the
+ * Neynar pagination cursor until the API reports no more data.
+ * @param env - Worker bindings containing the Neynar API base URL and key.
+ * @param castHash - Hash of the cast whose reactions should be resolved.
+ * @param types - Reaction type filter, defaults to likes.
+ * @param limit - Maximum number of reactions requested per request.
+ * @returns All reactions returned plus the final cursor, if Neynar provided one.
+ * @throws {Error} When the fetch fails or Neynar responds with an error.
+ */
 export const fetchFarcasterCastReactions = async (
   env: Env,
   castHash: string,
@@ -146,6 +164,7 @@ export const fetchFarcasterCastReactions = async (
   let cursor: string | null = null
 
   try {
+    // Keep requesting reactions until the API stops returning a cursor.
     do {
       const response = await fetch(cursor ? `${url}&cursor=${cursor}` : url, {
         headers,

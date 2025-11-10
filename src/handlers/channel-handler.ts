@@ -57,9 +57,11 @@ async function getNounFeedItems(env: Env) {
 }
 
 /**
- * Handles the nouns channel in the given environment.
- * @param env - The environment object.
- * @returns - A promise that resolves with no value.
+ * Reviews recent casts in the Nouns channel and enqueues like / recast
+ * reactions whenever enough verified Nouners have engaged but the bot has
+ * not yet done so, keeping the feed active without double-posting.
+ * @param env - Worker bindings providing KV state, queue access, and tokens.
+ * @returns Promise that resolves after qualifying casts are enqueued.
  */
 export async function handleNounsChannel(env: Env) {
   logger.info('Handling Nouns channel')
@@ -148,9 +150,10 @@ export async function handleNounsChannel(env: Env) {
 }
 
 /**
- * Handles the channel based on the given environment.
- * @param env - The environment object containing channel details.
- * @returns A Promise that resolves when the channel handler has completed execution.
+ * Entry point for channel workflows so additional strategies can be added
+ * without touching the scheduler wiring.
+ * @param env - Worker bindings consumed by the individual channel handlers.
+ * @returns Promise resolved after all configured channel workflows finish.
  */
 export async function channelHandler(env: Env) {
   logger.info('Channel handler started')
