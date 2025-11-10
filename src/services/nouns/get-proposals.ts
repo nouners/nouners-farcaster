@@ -1,24 +1,5 @@
 import { gql, GraphQLClient } from 'graphql-request'
-
-interface Delegate {
-  id: string
-}
-
-interface Vote {
-  voter: Delegate
-}
-
-interface Proposal {
-  votes: Vote[]
-  startBlock: string
-  endBlock: string
-  status: string
-  id: number
-}
-
-interface Data {
-  proposals: Proposal[]
-}
+import { Proposal, Query } from '@nekofar/nouns/subgraphs'
 
 interface Result {
   proposals: Proposal[]
@@ -80,7 +61,7 @@ export async function getProposals(env: Env): Promise<Result> {
 
   do {
     const query = getProposalsQuery(offset, limit)
-    const { proposals } = await client.request<Data>(query)
+    const { proposals } = await client.request<Query>(query)
 
     allProposals = [...allProposals, ...proposals]
     offset += limit

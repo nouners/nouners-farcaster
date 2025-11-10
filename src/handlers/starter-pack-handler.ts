@@ -5,8 +5,9 @@ import { logger } from '@/utilities/logger'
 import { filter, first, pipe } from 'remeda'
 
 /**
- * Handles the starter pack processing for the provided environment.
- * @param env - Environment configuration for the handler.
+ * Keeps the curated starter pack in sync with the latest Farcaster voters
+ * so discovery surfaces match current governance participants.
+ * @param env - Worker bindings with KV access and Warpcast credentials.
  */
 export async function starterPackHandler(env: Env): Promise<void> {
   const farcasterVoters = await getFarcasterVoters(env)

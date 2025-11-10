@@ -1,17 +1,5 @@
+import { Delegate, Query } from '@nekofar/nouns/subgraphs'
 import { gql, GraphQLClient } from 'graphql-request'
-
-interface Noun {
-  id: string
-}
-
-interface Delegate {
-  id: string
-  nounsRepresented: Noun[]
-}
-
-interface Data {
-  delegates: Delegate[]
-}
 
 interface Result {
   delegates: Delegate[]
@@ -69,7 +57,7 @@ export async function fetchDelegates(env: Env): Promise<Result> {
   while (shouldContinueFetching) {
     try {
       const query = getDelegatesQuery(skip, first)
-      const { delegates } = await client.request<Data>(query)
+      const { delegates } = await client.request<Query>(query)
       shouldContinueFetching = delegates.length > 0
 
       if (shouldContinueFetching) {

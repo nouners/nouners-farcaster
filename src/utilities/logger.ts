@@ -62,4 +62,8 @@ const loggerOptions: LoggerOptions = {
     (process.env.NODE_ENV === 'development' ? 'trace' : 'info'),
 }
 
+/**
+ * Shared Pino logger configured to pretty-print locally and emit ISO
+ * timestamps with structured metadata in production.
+ */
 export const logger = pino(loggerOptions)

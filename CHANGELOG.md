@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.51] - 2025-11-10
+
+### 🐛 Bug Fixes
+
+- *(channel-handler)* Reduce feed fetch limit
+- *(fetch-handler)* Return actual environment
+
+### 🚜 Refactor
+
+- *(services)* Replace inline interfaces with imported types
+
+### 📚 Documentation
+
+- Clarify pagination flow (#409)
+- *(services)* Add detailed jsdoc for handlers and utilities
+
+### 🎨 Styling
+
+- *(services)* Refine jsdoc for `updateStarterPack`
+
+### ⚙️ Miscellaneous Tasks
+
+- Resolve lint findings (#411)
+
 ## [1.0.0-alpha.50] - 2025-11-09
 
 ### ⚙️ Miscellaneous Tasks

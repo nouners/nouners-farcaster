@@ -39,6 +39,7 @@ export const getDirectCastConversations = async (
   let response: Response
 
   do {
+    // Request the next page of conversations using the current cursor.
     const params = {
       cursor: newCursor,
       limit: String(limit),
@@ -54,6 +55,7 @@ export const getDirectCastConversations = async (
         params,
       },
     )
+    // Accumulate conversations so we can stop once the desired limit is met.
     conversations = [...conversations, ...response.result.conversations]
     newCursor = response.next ? response.next.cursor : ''
   } while (response.next && conversations.length < limit)
