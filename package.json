@@ -33,6 +33,7 @@
     "viem": "2.38.6"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.4",
     "@cloudflare/vitest-pool-workers": "0.7.8",
     "@cloudflare/workers-types": "4.20251109.0",
     "@eslint/js": "9.39.1",
