@@ -37,9 +37,19 @@ function toRelativeTime(timestamp: number): string {
 }
 
 /**
- * Handles the proposal by retrieving or fetching voters from KV store and logging them.
- * @param env - The environment object.
- * @returns - A promise that resolves once the proposal is handled.
+ * Queues direct-cast reminders for every active proposal by intersecting
+ * cached Farcaster voters with the bot's followers and skipping anyone who
+ * has already voted or cannot receive messages.
+ *
+ * Workflow:
+ * - Loads cached Farcaster voters/users plus the bot's follower list.
+ * - Fetches active proposals whose voting windows are still open.
+ * - Resolves on-chain voters to Farcaster fids to avoid duplicate nudges.
+ * - Enqueues `direct-cast` tasks with deterministic idempotency keys.
+ *
+ * @param env - Worker bindings providing KV storage, Warpcast access, and the
+ *   queue used to fan out reminder casts.
+ * @returns Promise that resolves once all eligible reminders are enqueued.
  */
 export async function proposalHandler(env: Env) {
   const { KV: kv, QUEUE: queue } = env
@@ -118,6 +128,8 @@ export async function proposalHandler(env: Env) {
       'Processed proposal timeframes.',
     )
 
+    // Resolve on-chain voters to Farcaster fids so we skip people who already
+    // participated.
     const voters = await Promise.all(
       votes.map(async (vote) => {
         try {
@@ -152,6 +164,7 @@ export async function proposalHandler(env: Env) {
       endRelative: proposalEnd,
       link: formatProposalLink(id, proposalBaseUrl),
     })
+    // Hash the message body so retries cannot enqueue duplicate tasks.
     const idempotencyKey = createHash('sha256').update(message).digest('hex')
 
     for (const recipientFid of farcasterVoters) {
