@@ -157,6 +157,8 @@ async function fetchAndStoreFarcasterVoters(env: Env) {
     return
   }
 
+  // Use an approximate 12-second block time to translate three months of
+  // history into a block height window for the voter query.
   const now = DateTime.now()
   const blockTimeInSeconds = 12
   const threeMonthsAgo = now.minus({ months: 3 })
@@ -202,9 +204,11 @@ async function fetchAndStoreFarcasterVoters(env: Env) {
 }
 
 /**
- * Handles caching of data for LilNouns application.
- * @param env - The environment object containing KV storage.
- * @returns - A promise that resolves when caching is complete.
+ * Refreshes cached Farcaster user and voter lists so downstream jobs can read
+ * sorted FID sets without re-running expensive on-chain and Warpcast lookups
+ * every time a cron fires.
+ * @param env - Worker bindings exposing the KV namespace used for caching.
+ * @returns Promise that resolves once both caches finish persisting.
  */
 export async function cacheHandler(env: Env): Promise<void> {
   await Promise.all([
