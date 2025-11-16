@@ -12,10 +12,12 @@ interface ReactionBody {
 }
 
 /**
- * Fetches noun feed items from the specified environment until the maximum
- * number of items is reached or no more items are available.
- * @param env - The environment from which to fetch the feed items.
- * @returns A promise that resolves to an object containing the fetched items.
+ * Streams the Nouns channel feed in fixed-size windows while tracking which
+ * hash prefixes have already been requested. Warpcast accepts those prefixes
+ * to suppress duplicates, so callers can accumulate a clean set of casts for
+ * their own filtering strategies.
+ * @param env - Worker bindings used to call the Warpcast feed endpoint.
+ * @returns Aggregated feed items gathered across every paging iteration.
  */
 async function getNounFeedItems(env: Env) {
   logger.info('Fetching noun feed items')
@@ -23,6 +25,7 @@ async function getNounFeedItems(env: Env) {
   let fetchedItemsCount = 0
   const maxItems = 30
 
+  // Track hash prefixes we have already requested to avoid duplicates.
   let excludeItemIdPrefixes: string[] = []
 
   while (fetchedItemsCount < maxItems) {
