@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.52] - 2025-11-16
+
+### 📚 Documentation
+
+- *(cache-handler)* Explain Farcaster caching flow
+- *(proposal-handler)* Document reminder queuing workflow
+- *(channel-handler)* Clarify noun feed paging strategy
+
 ## [1.0.0-alpha.51] - 2025-11-10
 
 ### 🐛 Bug Fixes
