@@ -1,26 +1,11 @@
+import { webhookHandler } from '@/handlers/webhook-handler'
 import { logger } from '@/utilities/logger'
-
-/**
- * Builds a JSON response with standardized headers.
- * @param body - The JSON-serializable payload.
- * @param init - Optional response init overrides.
- * @returns A Cloudflare Worker Response instance.
- */
-function jsonResponse(body: unknown, init?: ResponseInit): Response {
-  const headers = new Headers(init?.headers)
-  headers.set('content-type', 'application/json; charset=utf-8')
-  headers.set('cache-control', 'no-store')
-
-  return new Response(JSON.stringify(body), {
-    ...init,
-    headers,
-  })
-}
+import { jsonResponse } from '@/utilities/responses/json-response'
 
 /**
  * Handles incoming fetch requests for the Worker.
- * Supports a simple health-check endpoint and returns structured errors for
- * unsupported paths or methods so that upstream monitors behave predictably.
+ * Supports health checks and webhook ingestion with signature validation so that
+ * upstream services receive structured responses.
  * @param request - The inbound Request object.
  * @param env - Worker bindings and variables.
  * @param _ctx - Execution context, reserved for future async work.
@@ -58,34 +43,7 @@ export async function fetchHandler(
   }
 
   if (pathname === '/webhook') {
-    if (method !== 'POST') {
-      return jsonResponse(
-        { error: 'Method Not Allowed', method },
-        {
-          status: 405,
-          headers: {
-            Allow: 'POST',
-          },
-        },
-      )
-    }
-
-    let payload: unknown = null
-    try {
-      payload = await request.json()
-    } catch (error) {
-      logger.warn({ error }, 'Webhook payload could not be parsed.')
-    }
-
-    logger.info({ payload }, 'Webhook payload received.')
-
-    return jsonResponse(
-      {
-        status: 'accepted',
-        receivedAt: new Date().toISOString(),
-      },
-      { status: 202 },
-    )
+    return webhookHandler(request, env)
   }
 
   return jsonResponse(
