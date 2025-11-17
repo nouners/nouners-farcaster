@@ -51,7 +51,7 @@ function toRelativeTime(timestamp: number): string {
  *   queue used to fan out reminder casts.
  * @returns Promise that resolves once all eligible reminders are enqueued.
  */
-export async function proposalHandler(env: Env) {
+export async function proposalReminderHandler(env: Env) {
   const { KV: kv, QUEUE: queue } = env
 
   logger.info('Fetching current user data...')

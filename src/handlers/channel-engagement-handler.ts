@@ -158,7 +158,7 @@ export async function handleNounsChannel(env: Env) {
  * @param env - Worker bindings consumed by the individual channel handlers.
  * @returns Promise resolved after all configured channel workflows finish.
  */
-export async function channelHandler(env: Env) {
+export async function channelEngagementHandler(env: Env) {
   logger.info('Channel handler started')
   await handleNounsChannel(env)
   logger.info('Channel handler completed')
