@@ -77,8 +77,8 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@9.39.1)
       eslint-plugin-jsdoc:
-        specifier: 61.1.12
-        version: 61.1.12(eslint@9.39.1)
+        specifier: 61.2.1
+        version: 61.2.1(eslint@9.39.1)
       eslint-plugin-prettier:
         specifier: 5.5.4
         version: 5.5.4(eslint-config-prettier@10.1.8(eslint@9.39.1))(eslint@9.39.1)(prettier@3.6.2)
@@ -2087,8 +2087,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-jsdoc@61.1.12:
-    resolution: {integrity: sha512-CGJTnltz7ovwOW33xYhvA4fMuriPZpR5OnJf09SV28iU2IUpJwMd6P7zvUK8Sl56u5YzO+1F9m46wpSs2dufEw==}
+  eslint-plugin-jsdoc@61.2.1:
+    resolution: {integrity: sha512-Htacti3dbkNm4rlp/Bk9lqhv+gi6US9jyN22yaJ42G6wbteiTbNLChQwi25jr/BN+NOzDWhZHvCDdrhX0F8dXQ==}
     engines: {node: '>=20.11.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -5142,7 +5142,7 @@ snapshots:
   '@typescript-eslint/project-service@8.46.4(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.46.4(typescript@5.9.3)
-      '@typescript-eslint/types': 8.46.4
+      '@typescript-eslint/types': 8.47.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -6432,7 +6432,7 @@ snapshots:
     dependencies:
       eslint: 9.39.1
 
-  eslint-plugin-jsdoc@61.1.12(eslint@9.39.1):
+  eslint-plugin-jsdoc@61.2.1(eslint@9.39.1):
     dependencies:
       '@es-joy/jsdoccomment': 0.76.0
       '@es-joy/resolve.exports': 1.2.0
@@ -7282,11 +7282,11 @@ snapshots:
   ox@0.6.7(typescript@5.9.3)(zod@3.25.76):
     dependencies:
       '@adraffy/ens-normalize': 1.11.1
-      '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.9.3)(zod@3.25.76)
+      '@noble/curves': 1.9.7
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.1.2(typescript@5.9.3)(zod@3.25.76)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.9.3
