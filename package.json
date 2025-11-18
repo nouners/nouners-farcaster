@@ -29,7 +29,7 @@
     "pino": "10.1.0",
     "remeda": "2.32.0",
     "type-fest": "5.2.0",
-    "unicorn-magic": "0.3.0",
+    "unicorn-magic": "0.4.0",
     "viem": "2.38.6"
   },
   "devDependencies": {
