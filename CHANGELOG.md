@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.53] - 2025-11-18
+
+### 🚜 Refactor
+
+- *(handlers)* Rename handlers for improved clarity
+- *(handlers)* Rename handlers for improved clarity
+- *(handlers)* Improve robustness of proposal reminder logic
+- *(handlers)* Reorganize imports and update names for clarity
+
+### 📚 Documentation
+
+- *(handlers)* Describe scheduled jobs
+
 ## [1.0.0-alpha.52] - 2025-11-16
 
 ### 📚 Documentation
