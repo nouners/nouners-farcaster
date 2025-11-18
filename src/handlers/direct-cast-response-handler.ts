@@ -168,7 +168,7 @@ async function handleMessages(env: Env) {
  * @param env - Worker bindings that expose KV, queue, and Warpcast tokens.
  * @returns Promise that resolves after replies are queued and caches saved.
  */
-export async function directCastsHandler(env: Env) {
+export async function directCastResponseHandler(env: Env) {
   logger.info('Starting direct cast handler process...')
   await handleMessages(env)
   await handleSubscribers(env)

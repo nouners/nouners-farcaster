@@ -9,7 +9,7 @@ import { filter, first, pipe } from 'remeda'
  * so discovery surfaces match current governance participants.
  * @param env - Worker bindings with KV access and Warpcast credentials.
  */
-export async function starterPackHandler(env: Env): Promise<void> {
+export async function starterPackSyncHandler(env: Env): Promise<void> {
   const farcasterVoters = await getFarcasterVoters(env)
   const { user } = await getMe(env)
 

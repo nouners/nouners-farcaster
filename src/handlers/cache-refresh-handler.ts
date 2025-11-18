@@ -210,7 +210,7 @@ async function fetchAndStoreFarcasterVoters(env: Env) {
  * @param env - Worker bindings exposing the KV namespace used for caching.
  * @returns Promise that resolves once both caches finish persisting.
  */
-export async function cacheHandler(env: Env): Promise<void> {
+export async function cacheRefreshHandler(env: Env): Promise<void> {
   await Promise.all([
     fetchAndStoreFarcasterUsers(env),
     fetchAndStoreFarcasterVoters(env),

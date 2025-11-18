@@ -8,12 +8,12 @@ import {
   formatProposalLink,
   resolveProposalBaseUrl,
 } from '@/utilities/formatters/proposal-link'
-import { buildProposalReminderMessage } from '@/utilities/messages/proposal-reminder'
 import { logger } from '@/utilities/logger'
+import { buildProposalReminderMessage } from '@/utilities/messages/proposal-reminder'
+import { ProposalStatus } from '@nekofar/nouns/subgraphs'
 import { DateTime } from 'luxon'
 import { createHash } from 'node:crypto'
 import { filter, isTruthy, map, pipe } from 'remeda'
-import { ProposalStatus } from '@nekofar/nouns/subgraphs'
 
 interface DirectCastBody {
   type: 'direct-cast'
@@ -30,10 +30,13 @@ interface DirectCastBody {
  * @returns A relative time string.
  */
 function toRelativeTime(timestamp: number): string {
-  return DateTime.fromSeconds(timestamp).toRelative({
+  const relative = DateTime.fromSeconds(timestamp).toRelative({
     style: 'long',
     unit: ['hours', 'minutes'],
   })
+
+  // Fallback in case Luxon cannot compute a relative time
+  return relative ?? 'some time ago'
 }
 
 /**
@@ -46,12 +49,11 @@ function toRelativeTime(timestamp: number): string {
  * - Fetches active proposals whose voting windows are still open.
  * - Resolves on-chain voters to Farcaster fids to avoid duplicate nudges.
  * - Enqueues `direct-cast` tasks with deterministic idempotency keys.
- *
  * @param env - Worker bindings providing KV storage, Warpcast access, and the
  *   queue used to fan out reminder casts.
  * @returns Promise that resolves once all eligible reminders are enqueued.
  */
-export async function proposalHandler(env: Env) {
+export async function proposalReminderHandler(env: Env) {
   const { KV: kv, QUEUE: queue } = env
 
   logger.info('Fetching current user data...')
