@@ -56,11 +56,11 @@ export async function proposalAnnouncementHandler(env: Env) {
         'Publishing cast for proposal...',
       )
 
-      // Publish the cast to the nouns channel
+      // Publish the cast to the nouners channel
       const result = await publishCast(
         env,
         castText,
-        'nouns',
+        'nouners',
         [{ url: proposalUrl }],
       )
 
