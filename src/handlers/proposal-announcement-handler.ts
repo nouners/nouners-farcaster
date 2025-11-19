@@ -1,16 +1,28 @@
-import { logger } from '@/utilities/logger'
 import { getBlockNumber } from '@/services/ethereum/get-block-number'
 import { getProposals } from '@/services/nouns/get-proposals'
-import { filter } from 'remeda'
-import { ProposalStatus } from '@nekofar/nouns/subgraphs'
-import { resolveProposalBaseUrl } from '@/utilities/formatters/proposal-link'
 import { publishCast } from '@/services/warpcast'
+import {
+  formatProposalLink,
+  resolveProposalBaseUrl,
+} from '@/utilities/formatters/proposal-link'
+import { logger } from '@/utilities/logger'
+import { ProposalStatus } from '@nekofar/nouns/subgraphs'
+import { filter } from 'remeda'
+
+const CAST_EXPIRATION_TTL_SECONDS = 60 * 60 * 24 * 30 // 30 days
 
 /**
- * Announces active proposals on Warpcast so nouners can vote before they close.
- * @param env - Cloudflare worker bindings including KV and API tokens.
+ * Posts announcement casts for active proposals whose voting windows are open.
+ *
+ * Workflow:
+ * - Fetches the current block to determine open voting windows.
+ * - Skips proposals already broadcast (tracked in KV).
+ * - Publishes casts to the nouners channel with deep links to proposals.
+ * @param env - Cloudflare worker bindings including KV storage and Warpcast API tokens.
  */
 export async function proposalAnnouncementHandler(env: Env) {
+  const { KV: kv } = env
+
   logger.info('Fetching current block number...')
   const blockNumber = await getBlockNumber(env)
 
@@ -29,6 +41,11 @@ export async function proposalAnnouncementHandler(env: Env) {
     'Filtered active proposals.',
   )
 
+  if (proposals.length === 0) {
+    logger.debug('No active proposals to announce.')
+    return
+  }
+
   const proposalBaseUrl = resolveProposalBaseUrl(env)
 
   for (const proposal of proposals) {
@@ -36,7 +53,7 @@ export async function proposalAnnouncementHandler(env: Env) {
     const kvKey = `announced:proposal:${proposalId}`
 
     // Check if we've already announced this proposal
-    const storedCastHash = await env.KV.get(kvKey)
+    const storedCastHash = await kv.get(kvKey)
 
     if (storedCastHash) {
       logger.info(
@@ -47,8 +64,8 @@ export async function proposalAnnouncementHandler(env: Env) {
     }
 
     // Format the cast message
-    const proposalUrl = `${proposalBaseUrl}/${proposalId}`
-    const castText = `🗳️ New Nouns proposal is now active!\n\nProposal ${proposalId}: ${proposal.title}\n\nVote now: ${proposalUrl}`
+    const proposalUrl = formatProposalLink(proposalId, proposalBaseUrl)
+    const castText = `🗳️ New Nouns proposal is now active!\n\nProposal ${proposalId}: ${proposal.title}\n\nVote now → ${proposalUrl}`
 
     try {
       logger.info(
@@ -70,8 +87,8 @@ export async function proposalAnnouncementHandler(env: Env) {
       )
 
       // Save the cast hash for this proposal
-      await env.KV.put(kvKey, result.cast.hash, {
-        expirationTtl: 60 * 60 * 24 * 30, // 30 days
+      await kv.put(kvKey, result.cast.hash, {
+        expirationTtl: CAST_EXPIRATION_TTL_SECONDS,
       })
     } catch (error) {
       logger.error(
