@@ -18,6 +18,8 @@ export async function scheduledHandler(
   env: Env,
 ) {
   switch (controller.cron) {
+    case CronTime.every(5).minutes():
+      break
     case CronTime.everyHour():
       // Refresh cached holders/voters data sets that power other jobs.
       await cacheRefreshHandler(env)
