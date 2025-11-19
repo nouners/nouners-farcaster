@@ -6,6 +6,7 @@ import { channelEngagementHandler } from '@/handlers/channel-engagement-handler'
 import { starterPackSyncHandler } from '@/handlers/starter-pack-sync-handler'
 import { directCastResponseHandler } from '@/handlers/direct-cast-response-handler'
 import { proposalReminderHandler } from '@/handlers/proposal-reminder-handler'
+import { proposalAnnouncementHandler } from '@/handlers/proposal-announcement-handler'
 
 /**
  * Handles scheduled events based on the provided cron schedule.
@@ -19,6 +20,8 @@ export async function scheduledHandler(
 ) {
   switch (controller.cron) {
     case CronTime.every(5).minutes():
+      // Announce new proposals in the Nouns channel.
+      await proposalAnnouncementHandler(env)
       break
     case CronTime.everyHour():
       // Refresh cached holders/voters data sets that power other jobs.
