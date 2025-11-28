@@ -50,7 +50,7 @@
     "globals": "16.5.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
-    "prettier": "3.6.2",
+    "prettier": "3.7.1",
     "prettier-plugin-jsdoc": "1.5.0",
     "prettier-plugin-organize-imports": "4.3.0",
     "prettier-plugin-packagejson": "2.5.19",
