@@ -16,8 +16,8 @@ importers:
         specifier: 1.0.0-alpha.24
         version: 1.0.0-alpha.24(@tanstack/react-query@5.83.0(react@19.1.1))(@wagmi/core@2.18.1(@tanstack/query-core@5.83.0)(react@19.1.1)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.1.1))(viem@2.40.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)))(graphql-request@6.1.0(graphql@16.12.0))(graphql-tag@2.12.6(graphql@16.12.0))(graphql@16.12.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)(viem@2.40.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(wagmi@2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.40.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76))
       '@nekofar/warpcast':
-        specifier: 2.0.0-alpha.96
-        version: 2.0.0-alpha.96(ofetch@1.5.1)(zod@3.25.76)
+        specifier: 2.0.0-alpha.97
+        version: 2.0.0-alpha.97(ofetch@1.5.1)(zod@3.25.76)
       cron-time-generator:
         specifier: 2.0.3
         version: 2.0.3
@@ -1007,8 +1007,8 @@ packages:
       viem: ^2.27.2
       wagmi: ^2.14.16
 
-  '@nekofar/warpcast@2.0.0-alpha.96':
-    resolution: {integrity: sha512-ByINlhGO1jmc7SkbCrr1bHC6het+8ve7StIHSzo1G8gDPyqGdr1d09VS749p1GtIKQjWjr18vNOuzR8QXiykRA==}
+  '@nekofar/warpcast@2.0.0-alpha.97':
+    resolution: {integrity: sha512-lKZkPgHzWNifJsLpcPHIRVsMeDRLa5XrVsBLAtv1E43Kv5Mp+/Il30nf2m10TGu2wswko/PmyUTY2bJl7SshYA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       ofetch: ^1.5.0
@@ -4600,7 +4600,7 @@ snapshots:
       viem: 2.40.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       wagmi: 2.16.1(@tanstack/query-core@5.83.0)(@tanstack/react-query@5.83.0(react@19.1.1))(bufferutil@4.0.9)(react@19.1.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.40.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
 
-  '@nekofar/warpcast@2.0.0-alpha.96(ofetch@1.5.1)(zod@3.25.76)':
+  '@nekofar/warpcast@2.0.0-alpha.97(ofetch@1.5.1)(zod@3.25.76)':
     dependencies:
       ofetch: 1.5.1
       zod: 3.25.76
