@@ -34,7 +34,7 @@ export async function proposalAnnouncementHandler(env: Env) {
     proposals,
     (proposal) =>
       proposal.status === ProposalStatus.Active &&
-      blockNumber <= Number(proposal.startBlock) &&
+      blockNumber >= Number(proposal.startBlock) &&
       blockNumber <= Number(proposal.endBlock),
   )
 
