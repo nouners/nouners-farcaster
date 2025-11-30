@@ -6,6 +6,7 @@ import {
   resolveProposalBaseUrl,
 } from '@/utilities/formatters/proposal-link'
 import { logger } from '@/utilities/logger'
+import { buildProposalAnnouncementMessage } from '@/utilities/messages/proposal-announcement'
 import { ProposalStatus } from '@nekofar/nouns/subgraphs'
 import { filter } from 'remeda'
 
@@ -65,7 +66,11 @@ export async function proposalAnnouncementHandler(env: Env) {
 
     // Format the cast message
     const proposalUrl = formatProposalLink(proposalId, proposalBaseUrl)
-    const castText = `🗳️ New Nouns proposal is now active!\n\nProposal ${proposalId}: ${proposal.title}\n\nVote now → ${proposalUrl}`
+    const castText = buildProposalAnnouncementMessage({
+      proposalId,
+      title: proposal.title,
+      link: proposalUrl,
+    })
 
     try {
       logger.info(
