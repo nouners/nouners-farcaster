@@ -1,6 +1,6 @@
 {
   "name": "nouners-farcaster",
-  "version": "1.0.0-alpha.56",
+  "version": "1.0.0-alpha.57",
   "private": true,
   "description": "",
   "type": "module",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@nekofar/nouns": "1.0.0-alpha.24",
-    "@nekofar/warpcast": "2.0.0-alpha.92",
+    "@nekofar/warpcast": "2.0.0-alpha.96",
     "cron-time-generator": "2.0.3",
     "graphql": "16.12.0",
     "graphql-request": "6.1.0",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.7.8",
-    "@cloudflare/workers-types": "4.20251127.0",
+    "@cloudflare/workers-types": "4.20251128.0",
     "@eslint/js": "9.39.1",
     "@types/eslint__js": "9.14.0",
     "@types/luxon": "3.7.1",
@@ -50,17 +50,17 @@
     "globals": "16.5.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
-    "prettier": "3.7.1",
-    "prettier-plugin-jsdoc": "1.5.0",
+    "prettier": "3.7.3",
+    "prettier-plugin-jsdoc": "1.7.0",
     "prettier-plugin-organize-imports": "4.3.0",
-    "prettier-plugin-packagejson": "2.5.19",
+    "prettier-plugin-packagejson": "2.5.20",
     "prettier-plugin-toml": "2.0.6",
     "typescript": "5.9.3",
     "typescript-eslint": "8.48.0",
     "vitest": "3.2.4",
     "wrangler": "4.16.1"
   },
-  "packageManager": "pnpm@10.21.0",
+  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
