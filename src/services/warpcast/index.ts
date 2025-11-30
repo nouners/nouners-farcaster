@@ -1,6 +1,7 @@
 import { first } from 'remeda'
 
 export { likeCast } from './like-cast'
+export { publishCast } from './publish-cast'
 
 export enum HttpRequestMethod {
   GET = 'GET',
