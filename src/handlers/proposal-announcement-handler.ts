@@ -79,12 +79,9 @@ export async function proposalAnnouncementHandler(env: Env) {
       )
 
       // Publish the cast to the nouners channel
-      const result = await publishCast(
-        env,
-        castText,
-        'nouners',
-        [{ url: proposalUrl }],
-      )
+      const result = await publishCast(env, castText, 'nouners', [
+        { url: proposalUrl },
+      ])
 
       logger.info(
         { proposalId, castHash: result.cast.hash },
@@ -97,7 +94,13 @@ export async function proposalAnnouncementHandler(env: Env) {
       })
     } catch (error) {
       logger.error(
-        { proposalId, error },
+        {
+          proposalId,
+          error:
+            error instanceof Error
+              ? { message: error.message, stack: error.stack, name: error.name }
+              : error,
+        },
         'Failed to publish cast for proposal.',
       )
     }
