@@ -72,6 +72,11 @@ export async function proposalAnnouncementHandler(env: Env) {
       link: proposalUrl,
     })
 
+    logger.debug(
+      { proposalId, castText },
+      'Built cast message for proposal.',
+    )
+
     try {
       logger.info(
         { proposalId, title: proposal.title },
