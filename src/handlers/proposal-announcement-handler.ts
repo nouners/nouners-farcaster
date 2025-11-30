@@ -1,6 +1,5 @@
 import { getBlockNumber } from '@/services/ethereum/get-block-number'
 import { getProposals } from '@/services/nouns/get-proposals'
-import { publishCast } from '@/services/warpcast'
 import {
   formatProposalLink,
   resolveProposalBaseUrl,
@@ -8,6 +7,7 @@ import {
 import { logger } from '@/utilities/logger'
 import { buildProposalAnnouncementMessage } from '@/utilities/messages/proposal-announcement'
 import { ProposalStatus } from '@nekofar/nouns/subgraphs'
+import { createCast } from '@nekofar/warpcast'
 import { filter } from 'remeda'
 
 const CAST_EXPIRATION_TTL_SECONDS = 60 * 60 * 24 * 30 // 30 days
@@ -72,10 +72,7 @@ export async function proposalAnnouncementHandler(env: Env) {
       link: proposalUrl,
     })
 
-    logger.debug(
-      { proposalId, castText },
-      'Built cast message for proposal.',
-    )
+    logger.debug({ proposalId, castText }, 'Built cast message for proposal.')
 
     try {
       logger.info(
@@ -84,17 +81,26 @@ export async function proposalAnnouncementHandler(env: Env) {
       )
 
       // Publish the cast to the nouners channel
-      const result = await publishCast(env, castText, 'nouners', [
-        { url: proposalUrl },
-      ])
+      const { data, error } = await createCast({
+        body: {
+          text: castText,
+          channelKey: 'nouners',
+          embeds: [proposalUrl],
+        },
+        auth: () => env.WARPCAST_ACCESS_TOKEN,
+      })
+
+      if (error) {
+        throw error instanceof Error ? error : new Error(JSON.stringify(error))
+      }
 
       logger.info(
-        { proposalId, castHash: result.cast.hash },
+        { proposalId, castHash: data.result?.cast?.hash },
         'Successfully published cast for proposal.',
       )
 
       // Save the cast hash for this proposal
-      await kv.put(kvKey, result.cast.hash, {
+      await kv.put(kvKey, data.result?.cast?.hash ?? '', {
         expirationTtl: CAST_EXPIRATION_TTL_SECONDS,
       })
     } catch (error) {
