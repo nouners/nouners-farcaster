@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.58] - 2025-11-30
+
+### 🚀 Features
+
+- *(handlers)* Add 5-minute cron schedule to triggers
+- *(warpcast)* Add `publishCast` function for cast publishing
+- *(handlers)* Add proposal announcement handler for active proposals
+
+### 🐛 Bug Fixes
+
+- *(handlers)* Update channel for proposal announcements
+- *(handlers)* Enhance proposal announcement and logging
+- *(handlers)* Refactor proposal announcement message creation
+- *(handlers)* Enhance error logging in proposal announcement
+- *(handlers)* Improve debugging in proposal announcement
+- *(handlers)* Replace `publishCast` with `createCast` in proposal announcements
+- *(handlers)* Update proposal filtering logic for active status
+- *(messages)* Update proposal announcement formatting
+- *(handlers)* Adjust proposal filtering for active status
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update `compatibility_date` in `wrangler.toml`
+
 ## [1.0.0-alpha.57] - 2025-11-30
 
 ### 🐛 Bug Fixes
