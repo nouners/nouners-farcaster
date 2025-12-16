@@ -40,7 +40,7 @@
     "@types/eslint__js": "9.14.0",
     "@types/luxon": "3.7.1",
     "@types/node": "25.0.2",
-    "@typescript-eslint/parser": "8.49.0",
+    "@typescript-eslint/parser": "8.50.0",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "61.5.0",
