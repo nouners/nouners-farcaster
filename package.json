@@ -1,6 +1,6 @@
 {
   "name": "nouners-farcaster",
-  "version": "1.0.0-alpha.61",
+  "version": "1.0.0-alpha.62",
   "private": true,
   "description": "",
   "type": "module",
@@ -19,29 +19,29 @@
     "nanoid": ">=3.3.8"
   },
   "dependencies": {
-    "@nekofar/nouns": "1.0.0-alpha.24",
-    "@nekofar/warpcast": "2.0.0-alpha.101",
+    "@nekofar/nouns": "1.0.0-alpha.34",
+    "@nekofar/warpcast": "2.0.0-alpha.109",
     "cron-time-generator": "2.0.3",
     "graphql": "16.12.0",
     "graphql-request": "6.1.0",
     "luxon": "3.7.2",
     "ofetch": "1.5.1",
     "pino": "10.1.0",
-    "remeda": "2.32.0",
+    "remeda": "2.33.0",
     "type-fest": "5.3.1",
     "unicorn-magic": "0.4.0",
-    "viem": "2.41.2",
-    "zod": "4.1.13"
+    "viem": "2.43.4",
+    "zod": "4.3.4"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.7.8",
-    "@cloudflare/workers-types": "4.20251212.0",
-    "@eslint/js": "9.39.1",
+    "@cloudflare/workers-types": "4.20251231.0",
+    "@eslint/js": "9.39.2",
     "@types/eslint__js": "9.14.0",
     "@types/luxon": "3.7.1",
-    "@types/node": "25.0.0",
-    "@typescript-eslint/parser": "8.49.0",
-    "eslint": "9.39.1",
+    "@types/node": "25.0.3",
+    "@typescript-eslint/parser": "8.51.0",
+    "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "61.5.0",
     "eslint-plugin-prettier": "5.5.4",
@@ -57,13 +57,13 @@
     "prettier-plugin-packagejson": "2.5.20",
     "prettier-plugin-toml": "2.0.6",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.49.0",
+    "typescript-eslint": "8.51.0",
     "vitest": "3.2.4",
     "wrangler": "4.16.1"
   },
   "packageManager": "pnpm@10.25.0",
   "engines": {
-    "node": ">=22.0.0",
-    "pnpm": ">=10.0.0"
+    "node": "^24",
+    "pnpm": "^10"
   }
 }
