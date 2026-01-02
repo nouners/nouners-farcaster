@@ -54,10 +54,10 @@ importers:
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 0.7.8
-        version: 0.7.8(@cloudflare/workers-types@4.20251231.0)(@vitest/runner@4.0.5)(@vitest/snapshot@4.0.5)(bufferutil@4.1.0)(utf-8-validate@5.0.10)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1))
+        version: 0.7.8(@cloudflare/workers-types@4.20260101.0)(@vitest/runner@4.0.5)(@vitest/snapshot@4.0.5)(bufferutil@4.1.0)(utf-8-validate@5.0.10)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1))
       '@cloudflare/workers-types':
-        specifier: 4.20251231.0
-        version: 4.20251231.0
+        specifier: 4.20260101.0
+        version: 4.20260101.0
       '@eslint/js':
         specifier: 9.39.2
         version: 9.39.2
@@ -129,7 +129,7 @@ importers:
         version: 3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1)
       wrangler:
         specifier: 4.16.1
-        version: 4.16.1(@cloudflare/workers-types@4.20251231.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
+        version: 4.16.1(@cloudflare/workers-types@4.20260101.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
 
 packages:
 
@@ -240,8 +240,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20251231.0':
-    resolution: {integrity: sha512-XOP7h2y9Nu3ECuZM9S7w3g4GSliTgj6SEEkYj6G6d3TEQtOiV/cHXuI/fKiLj8Z9+qJK/RLLcKkX14NxajrXCw==}
+  '@cloudflare/workers-types@4.20260101.0':
+    resolution: {integrity: sha512-C28o4U1T4dPe8avLv1xMQ4MtSE6G4skbVA3VfVZIrpTqklvO+homKB1uFEtNbuZlaKg+Znv8sjmGQUInTH17gA==}
 
   '@coinbase/wallet-sdk@3.9.3':
     resolution: {integrity: sha512-N/A2DRIf0Y3PHc1XAMvbBUu4zisna6qAdqABMZwBMNEfWrXpAwx16pZGkYCLGE+Rvv1edbcB2LYDRnACNcmCiw==}
@@ -1288,6 +1288,7 @@ packages:
 
   '@types/eslint__js@9.14.0':
     resolution: {integrity: sha512-s0jepCjOJWB/GKcuba4jISaVpBudw3ClXJ3fUK4tugChUMQsp6kSwuA8Dcx6wFd/JsJqcY8n4rEpa5RTHs5ypA==}
+    deprecated: This is a stub types definition. @eslint/js provides its own type definitions, so you do not need this installed.
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -3043,6 +3044,7 @@ packages:
 
   rollup-plugin-inject@3.0.2:
     resolution: {integrity: sha512-ptg9PQwzs3orn4jkgXJ74bfs5vYz1NCZlSQMBUA0wKcGp5i5pA1AO3fOUEte8enhGUC+iapTCzEWw2jEFFUO/w==}
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-inject.
 
   rollup-plugin-node-polyfills@0.2.1:
     resolution: {integrity: sha512-4kCrKPTJ6sK4/gLL/U5QzVT8cxJcofO0OU74tnB19F40cmuAKSzH5/siithxlofFEjwvw1YAhPmbvGNA6jEroA==}
@@ -3163,6 +3165,7 @@ packages:
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   spdx-exceptions@2.5.0:
     resolution: {integrity: sha512-PiU42r+xO4UbUS1buo3LPJkjlO7430Xn5SVAhdpzzsPHsjbYVflnnFdATgabnLude+Cqu25p6N+g2lw/PFsa4w==}
@@ -3824,7 +3827,7 @@ snapshots:
     optionalDependencies:
       workerd: 1.20250508.0
 
-  '@cloudflare/vitest-pool-workers@0.7.8(@cloudflare/workers-types@4.20251231.0)(@vitest/runner@4.0.5)(@vitest/snapshot@4.0.5)(bufferutil@4.1.0)(utf-8-validate@5.0.10)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1))':
+  '@cloudflare/vitest-pool-workers@0.7.8(@cloudflare/workers-types@4.20260101.0)(@vitest/runner@4.0.5)(@vitest/snapshot@4.0.5)(bufferutil@4.1.0)(utf-8-validate@5.0.10)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1))':
     dependencies:
       '@vitest/runner': 4.0.5
       '@vitest/snapshot': 4.0.5
@@ -3835,7 +3838,7 @@ snapshots:
       miniflare: 3.20250310.0(bufferutil@4.1.0)(utf-8-validate@5.0.10)
       semver: 7.7.2
       vitest: 3.2.4(@types/debug@4.1.12)(@types/node@25.0.3)(yaml@2.8.1)
-      wrangler: 3.114.1(@cloudflare/workers-types@4.20251231.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
+      wrangler: 3.114.1(@cloudflare/workers-types@4.20260101.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
       zod: 3.25.76
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
@@ -3872,7 +3875,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20250508.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20251231.0': {}
+  '@cloudflare/workers-types@4.20260101.0': {}
 
   '@coinbase/wallet-sdk@3.9.3':
     dependencies:
@@ -8055,7 +8058,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250508.0
       '@cloudflare/workerd-windows-64': 1.20250508.0
 
-  wrangler@3.114.1(@cloudflare/workers-types@4.20251231.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10):
+  wrangler@3.114.1(@cloudflare/workers-types@4.20260101.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/unenv-preset': 2.0.2(unenv@2.0.0-rc.14)(workerd@1.20250310.0)
@@ -8068,14 +8071,14 @@ snapshots:
       unenv: 2.0.0-rc.14
       workerd: 1.20250310.0
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20251231.0
+      '@cloudflare/workers-types': 4.20260101.0
       fsevents: 2.3.3
       sharp: 0.33.5
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  wrangler@4.16.1(@cloudflare/workers-types@4.20251231.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10):
+  wrangler@4.16.1(@cloudflare/workers-types@4.20260101.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.3.2(unenv@2.0.0-rc.17)(workerd@1.20250508.0)
@@ -8086,7 +8089,7 @@ snapshots:
       unenv: 2.0.0-rc.17
       workerd: 1.20250508.0
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20251231.0
+      '@cloudflare/workers-types': 4.20260101.0
       fsevents: 2.3.3
       sharp: 0.33.5
     transitivePeerDependencies:
