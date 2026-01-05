@@ -1,6 +1,6 @@
 {
   "name": "nouners-farcaster",
-  "version": "1.0.0-alpha.62",
+  "version": "1.0.0-alpha.63",
   "private": true,
   "description": "",
   "type": "module",
@@ -61,7 +61,7 @@
     "vitest": "3.2.4",
     "wrangler": "4.16.1"
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.27.0",
   "engines": {
     "node": "^24",
     "pnpm": "^10"

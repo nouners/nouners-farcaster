@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.63] - 2026-01-05
+
+### 🐛 Bug Fixes
+
+- Solve some minor issues and update dependencies
+
 ## [1.0.0-alpha.62] - 2026-01-01
 
 ### 🐛 Bug Fixes
