@@ -46,7 +46,7 @@
     "eslint-plugin-jsdoc": "61.5.0",
     "eslint-plugin-prettier": "5.5.4",
     "eslint-plugin-regexp": "2.10.0",
-    "eslint-plugin-unicorn": "62.0.0",
+    "eslint-plugin-unicorn": "63.0.0",
     "eslint-plugin-vitest": "0.5.4",
     "globals": "17.0.0",
     "husky": "9.1.7",
